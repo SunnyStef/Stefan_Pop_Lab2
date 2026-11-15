@@ -10,6 +10,6 @@ namespace Stefan_Pop_Lab2.Models
         public string PublisherName { get; set; } = string.Empty;
 
         // Cartile asociate editurii
-        public ICollection<Book>? Books { get; set; }
+        public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }

@@ -8,5 +8,6 @@
 
         public string LastName { get; set; } = string.Empty;
         public string FullName => FirstName + " " + LastName;
+        public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }
