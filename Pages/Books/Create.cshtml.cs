@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Stefan_Pop_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Stefan_Pop_Lab2.Pages.BookPages;
 
+[Authorize(Roles = "Admin")]
 public class CreateModel : BookCategoriesPageModel
 {
     private readonly Stefan_Pop_Lab2Context _context;
