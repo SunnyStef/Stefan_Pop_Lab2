@@ -26,5 +26,10 @@ namespace Stefan_Pop_Lab2.Models
 
         // Legatura cu editura
         public Publisher? Publisher { get; set; }
+
+
+        public ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
+
+
     }
 }

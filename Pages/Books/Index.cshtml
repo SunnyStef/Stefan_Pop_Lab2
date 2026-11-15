@@ -1,4 +1,4 @@
-@page
+@page "/"
 @model Stefan_Pop_Lab2.Pages.BookPages.IndexModel
 
 @{
@@ -27,10 +27,16 @@
                         Publisher Name
                     </th>
 
+                    <th>
+                        Categories
+                    </th>
+
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Book) {
+                @foreach (var item in Model.BookD.Books)
+                {
         <tr>
             <td>
                 @Html.DisplayFor(model => item.Title)
@@ -46,6 +52,15 @@
                         <td>
                             @(item.Publisher?.PublisherName ?? "Fara editura")
                         </td>
+                                <td>
+                                    @foreach (var category in item.BookCategories)
+                                    {
+                                        <div>
+                                            @category.CategoryID - @category.Category.CategoryName
+                                        </div>
+                                    }
+                                </td>
+
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

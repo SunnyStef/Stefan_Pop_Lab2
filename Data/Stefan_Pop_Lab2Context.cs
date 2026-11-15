@@ -7,4 +7,9 @@ public class Stefan_Pop_Lab2Context(DbContextOptions<Stefan_Pop_Lab2Context> opt
     public DbSet<Stefan_Pop_Lab2.Models.Publisher> Publisher { get; set; } = default!;
     public DbSet<Stefan_Pop_Lab2.Models.Authors> Authors { get; set; } = default!;
 
+    public DbSet<Stefan_Pop_Lab2.Models.Category> Category { get; set; } = default!;
+
+    public DbSet<Stefan_Pop_Lab2.Models.BookCategory> BookCategory { get; set; } = default!;
+
+
 }
