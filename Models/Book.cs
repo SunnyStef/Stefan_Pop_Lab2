@@ -30,6 +30,9 @@ namespace Stefan_Pop_Lab2.Models
 
         public ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
 
+        public ICollection<Borrowing> Borrowings { get; set; } = new List<Borrowing>();
+
+
 
     }
 }

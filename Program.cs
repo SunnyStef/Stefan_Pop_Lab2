@@ -1,8 +1,23 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Stefan_Pop_Lab2.Data;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Stefan_Pop_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Stefan_Pop_Lab2Context' not found.");
 
 builder.Services.AddDbContext<Stefan_Pop_Lab2Context>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddDbContext<LibraryIdentityContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("Stefan_Pop_Lab2Context")
+        ?? throw new InvalidOperationException(
+            "Connection string not found.")));
+
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+    options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<LibraryIdentityContext>();
+
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -20,7 +35,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
